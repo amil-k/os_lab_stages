@@ -1,0 +1,19 @@
+fdisk
+load --library /home/expos/myexpos/expl/library.lib
+load --init /home/expos/myexpos/workdir/stage18/stage17assgn.xsm
+load --idle /home/expos/myexpos/workdir/stage18/idle.xsm
+load --os /home/expos/myexpos/workdir/stage18/startup_18.xsm
+load --module 0 /home/expos/myexpos/workdir/stage18/resourceManager_18.xsm
+load --module 1 /home/expos/myexpos/workdir/stage18/module1_18.xsm
+load --module 2 /home/expos/myexpos/workdir/stage18/module2_18.xsm
+load --module 4 /home/expos/myexpos/workdir/stage18/deviceManager_18.xsm
+load --module 5 /home/expos/myexpos/workdir/stage18/scheduler_18.xsm
+load --module 7 /home/expos/myexpos/workdir/stage18/boot_18.xsm
+load --int=timer /home/expos/myexpos/workdir/stage18/timer_18.xsm
+load --int=console /home/expos/myexpos/workdir/stage18/intCons_18.xsm
+load --int=disk /home/expos/myexpos/workdir/stage18/diskInterruptHandler_18.xsm
+load --int=6 /home/expos/myexpos/spl/spl_prog/INT/int6_16.xsm
+load --int=7 /home/expos/myexpos/workdir/stage18/int7_18.xsm
+load --int=9 /home/expos/myexpos/workdir/stage18/execSysCall_18.xsm
+load --int=10 /home/expos/myexpos/workdir/stage18/int10_18.xsm
+load --exec /home/expos/myexpos/workdir/stage18/odd.xsm
