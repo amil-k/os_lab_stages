@@ -14,6 +14,6 @@ load --int=console /home/expos/myexpos/workdir/stage18/intCons_18.xsm
 load --int=disk /home/expos/myexpos/workdir/stage18/diskInterruptHandler_18.xsm
 load --int=6 /home/expos/myexpos/spl/spl_prog/INT/int6_16.xsm
 load --int=7 /home/expos/myexpos/workdir/stage18/int7_18.xsm
-load --int=9 /home/expos/myexpos/workdir/stage18/execSysCall_18.xsm
+load --int=9 /home/expos/myexpos/workdir/stage18/int9_temp_18.xsm
 load --int=10 /home/expos/myexpos/workdir/stage18/int10_18.xsm
 load --exec /home/expos/myexpos/workdir/stage18/odd.xsm
