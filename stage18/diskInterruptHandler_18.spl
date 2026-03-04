@@ -1,18 +1,16 @@
-
-multipush(R1,R2,R3,R4);
-
 alias userSP R0;
 alias currentPID R1;
 alias process_table_entry R2;
 
 currentPID = [SYSTEM_STATUS_TABLE + 1];
-process_table_entry = PROCESS_TABLE + (currentPID*16) ;
 
 //saving usr stack
-[process_table_entry + 13] = SP;
+[process_table_entry + 16*currentPID + 13] = SP;
 userSP = SP;
 //set kernel stack;
-SP = [process_table_entry + 11];
+SP = [process_table_entry + 11]*512 - 1;
+
+backup;
 
 //terminal is free now after the interupt;
 [DISK_STATUS_TABLE + 0] = 0;
@@ -20,14 +18,18 @@ SP = [process_table_entry + 11];
 alias counter R3;
 counter =0;
 
-while(counter < MAX_PROC_NUM) do
-    process_table_entry = [PROCESS_TABLE + (16*counter)];
-    if([process_table_entry + 1] > 0) then
+while(counter < 16) do
+    process_table_entry = PROCESS_TABLE + (16*counter);
+    //if([process_table_entry + 1] > 0) then
         if([process_table_entry + 4] == WAIT_DISK )then
             [process_table_entry + 4] = READY;
         endif;
-    endif;
+    //endif;
+    counter = counter + 1;
 endwhile;
 
-multipop(R1,R2,R3,R4);
+restore;
+SP = [PROCESS_TABLE + 16*currentPID + 13];
+[PROCESS_TABLE + 16*currentPID + 9] = 0;
+
 ireturn;

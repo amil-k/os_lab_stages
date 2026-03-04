@@ -6,6 +6,10 @@ loadi(3,16);
 loadi(4,17);
 loadi(5,18);
 
+//load Disk Interupt
+loadi(6,19);
+loadi(7,20);
+
 //load console
 loadi(8,21); 
 loadi(9,22);
@@ -60,9 +64,6 @@ loadi(66,8);
 
 //loadi(83,69); //user area page for exec
 
-//load Disk Interupt
-loadi(83,19);
-loadi(84,20);
 
 [DISK_STATUS_TABLE] = 0;
 
@@ -116,8 +117,9 @@ PTLR = 10;
 alias counter R3;
 counter =0;
 while(counter<8) do
-    [[PROCESS_TABLE + 16 + 11] + 496 + counter ] =-1;
-    [[PROCESS_TABLE + 16 + 11] + 496 + counter + 1] =-1;
+    [[PROCESS_TABLE + 16 + 11]*512 + 496 + counter ] =-1;
+    [[PROCESS_TABLE + 16 + 11]*512 + 496 + counter + 1] =-1;
+	counter = counter+1;
 endwhile;
     
 
@@ -132,7 +134,7 @@ endwhile;
 
 counter = 0;
 while(counter < 128) do
-	if (counter < 83) then
+	if (counter < 86) then
 		[MEMORY_FREE_LIST + counter] = 1;
 	else
 		[MEMORY_FREE_LIST + counter] = 0;
