@@ -23,7 +23,6 @@ call BOOT_MODULE;
 PTBR = PAGE_TABLE_BASE;
 PTLR = 10;
 
-breakpoint;
 
 
 //IDLE PROCESS

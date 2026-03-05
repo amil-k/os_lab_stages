@@ -35,7 +35,6 @@ if(functionNum == 8) then
 
     [TERMINAL_STATUS_TABLE] = 1;
     [TERMINAL_STATUS_TABLE + 1] =currentPID;
-    breakpoint;
     return;
 endif;
 
